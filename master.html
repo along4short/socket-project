@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Master Node</title>
+  </head>
+  <body>
+    <h1>Master Node</h1>
+    <ul id="logContainer"></ul>
+    <button onclick="broadcastMessage()">Broadcast Message</button>
+    <button onclick="incrementVariable()">Increment Variable</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const logContainer = document.getElementById('logContainer');
+
+      function broadcastMessage() {
+        const message = prompt('Enter message to broadcast:');
+        socket.emit('broadcast', message);
+      }
+
+      function incrementVariable() {
+        socket.emit('increment');
+      }
+
+      // Update log messages in the HTML
+      function appendLogMessage(message) {
+        const li = document.createElement('li');
+        li.textContent = message;
+        logContainer.appendChild(li);
+      }
+
+      socket.on('connect', () => {
+        appendLogMessage('Connected to server');
+      });
+
+      socket.on('disconnect', () => {
+        appendLogMessage('Disconnected from server');
+      });
+
+      socket.on('message', (message) => {
+        appendLogMessage(`Received message: ${message}`);
+      });
+
+      socket.on('increment', (value) => {
+        appendLogMessage('Master: Incrementing variable');
+        if (value > 5) {
+          appendLogMessage(`Child: Variable X incremented to ${value}`);
+          appendLogMessage('Child: X has surpassed 5');
+          appendLogMessage('Child: Scheduling task');
+          appendLogMessage('Child: Task executed');
+        }
+      });
+    </script>
+  </body>
+</html>

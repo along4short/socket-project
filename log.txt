@@ -1,0 +1,24 @@
+Child: Received message: Welcome to the Master Node
+Child: Received message: 1
+Child: Variable X incremented to 1
+Child: Variable X incremented to 2
+Child: Variable X incremented to 3
+Child: Variable X incremented to 4
+Child: Variable X incremented to 5
+Child: Variable X incremented to 6
+Child: X has surpassed 5
+Child: Scheduling task
+Child: Task executed
+Child: Received message: null
+Child: Variable X incremented to 7
+Child: X has surpassed 5
+Child: Scheduling task
+Child: Variable X incremented to 8
+Child: X has surpassed 5
+Child: Scheduling task
+Child: Task executed
+Child: Task executed
+Child: Variable X incremented to 9
+Child: X has surpassed 5
+Child: Scheduling task
+Child: Task executed
